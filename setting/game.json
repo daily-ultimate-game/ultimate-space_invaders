@@ -1,8 +1,8 @@
 {
-  "title": "ultimate-game-template",
-  "description": "A fun ultimate game.",
+  "title": "ultimate-space_invaders",
+  "description": "A fun ultimate space invaders game.",
   "cover_image": "cover.jpg",
-  "repo": "daily-ultimate-game/ultimate-game-template",
+  "repo": "daily-ultimate-game/ultimate-space_invaders",
   "author": "paco1127",
-  "tags": []
+  "tags": ["game","arcade","space","crazy"]
 }

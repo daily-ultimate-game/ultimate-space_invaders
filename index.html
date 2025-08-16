@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Space Invaders</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="main-menu" class="screen">
+            <h1>ULTIMATE SPACE INVADERS</h1>
+            <div class="menu-content">
+                <div class="instructions">
+                    <h2>Instructions</h2>
+                    <p><strong>Controls:</strong></p>
+                    <ul>
+                        <li>Move Left: ← or A</li>
+                        <li>Move Right: → or D</li>
+                        <li>Shoot: Space</li>
+                        <li>Switch Weapon: 1-5 (number keys)</li>
+                        <li>Pause: ESC or P</li>
+                    </ul>
+                    <p><strong>Gameplay:</strong></p>
+                    <ul>
+                        <li>Defeat all enemies in each level</li>
+                        <li>Collect gold from defeated enemies</li>
+                        <li>Gain a random skill after each level</li>
+                        <li>Buy and upgrade weapons in the shop</li>
+                        <li>Combine 3 identical weapons to upgrade to next tier</li>
+                    </ul>
+                </div>
+                <div class="weapon-info">
+                    <h2>Weapons</h2>
+                    <ul>
+                        <li><strong>Gun:</strong> Balanced damage, speed and price</li>
+                        <li><strong>Machine Gun:</strong> Fast shooting, less damage</li>
+                        <li><strong>Shotgun:</strong> Multi-projectile, medium damage</li>
+                        <li><strong>Rocket:</strong> High damage, slow reload</li>
+                        <li><strong>Laser:</strong> Piercing beam, high price</li>
+                        <li><strong>Sniper:</strong> Piercing shot, high damage, slow reload</li>
+                        <li><strong>Flamethrower:</strong> Burns enemies over time</li>
+                        <li><strong>Railgun:</strong> Pierces all, electric shock</li>
+                        <li><strong>Plasma Cannon:</strong> Huge plasma ball, splash damage</li>
+                        <li><strong>Ice Blaster:</strong> Slows enemies</li>
+                        <li><strong>Toxic Sprayer:</strong> Poisons enemies</li>
+                    </ul>
+                </div>
+                <div class="tiers-info">
+                    <h2>Weapon Tiers</h2>
+                    <ul>
+                        <li><strong>Common:</strong> Base stats (white)</li>
+                        <li><strong>Uncommon:</strong> 1.5× stats (green)</li>
+                        <li><strong>Rare:</strong> 2× stats (blue)</li>
+                        <li><strong>Epic:</strong> 3× stats (purple)</li>
+                        <li><strong>Legendary:</strong> 6× stats (gold)</li>
+                        <li><strong>Mythic:</strong> 8× stats (pink)</li>
+                        <li><strong>Exotic:</strong> 10× stats (cyan)</li>
+                        <li><strong>Transcendent:</strong> 20× stats (red)</li>
+                    </ul>
+                </div>
+            </div>
+            <button id="start-game" class="button">START GAME</button>
+        </div>
+
+        <div id="game-screen" class="screen hidden">
+            <canvas id="game-canvas"></canvas>
+            <div id="hud">
+                <div id="stats">
+                    <div id="level">Level: 1</div>
+                    <div id="health">HP: 3</div>
+                    <div id="shield">Shield: 0</div>
+                    <div id="gold">Gold: 0</div>
+                </div>
+                <div id="weapons-container">
+                    <div class="weapon-slot" data-index="0">1</div>
+                    <div class="weapon-slot" data-index="1">2</div>
+                    <div class="weapon-slot" data-index="2">3</div>
+                    <div class="weapon-slot" data-index="3">4</div>
+                    <div class="weapon-slot" data-index="4">5</div>
+                </div>
+                <div id="powerups-display" aria-live="polite"></div> <!-- new -->
+            </div>
+        </div>
+
+        <div id="shop-screen" class="screen hidden">
+            <h2>WEAPON SHOP</h2>
+            <div id="gold-display">Gold: <span id="shop-gold">0</span></div>
+            <div id="shop-items"></div>
+            <div id="inventory">
+                <h3>Your Weapons</h3>
+                <div id="inventory-items"></div>
+            </div>
+            <button id="continue-game" class="button">CONTINUE</button>
+        </div>
+
+        <div id="skill-screen" class="screen hidden">
+            <h2>SKILL UPGRADE</h2>
+            <p>Choose one skill to improve:</p>
+            <div id="skill-options"></div>
+            <button id="continue-after-skill" class="button">CONTINUE</button>
+        </div>
+        
+        <div id="game-over" class="screen hidden">
+            <h2>GAME OVER</h2>
+            <div id="final-stats">
+                <p>Level Reached: <span id="final-level">0</span></p>
+                <p>Gold Collected: <span id="final-gold">0</span></p>
+                <p>Enemies Defeated: <span id="final-enemies">0</span></p>
+            </div>
+            <button id="restart-game" class="button">PLAY AGAIN</button>
+            <button id="return-menu" class="button">MAIN MENU</button>
+        </div>
+    </div>
+
+    <script src="game.js" type="module"></script>
+</body>
+</html>
