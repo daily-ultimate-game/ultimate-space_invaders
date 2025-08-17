@@ -117,10 +117,13 @@ export class ShopManager {
     getTierColor(tier) {
         switch (tier) {
             case 'common': return '#fff';
+            case 'uncommon': return '#6f6';
             case 'rare': return '#4af';
             case 'epic': return '#a4f';
-            case 'epic+': return '#f4a';
             case 'legendary': return '#fd4';
+            case 'mythic': return '#f4a';
+            case 'exotic': return '#0ff';
+            case 'transcendent': return '#f00';
             default: return '#fff';
         }
     }

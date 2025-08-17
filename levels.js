@@ -52,8 +52,8 @@ export class LevelManager {
         }
         
         // Increase difficulty with level
-        this.enemyHealthMultiplier = 1 + (level - 1) * 0.1;
-        this.enemySpeedMultiplier = 1 + (level - 1) * 0.05;
+        this.enemyHealthMultiplier = 1 + (level - 1) * 0.5;
+        this.enemySpeedMultiplier = 1 + (level - 1) * 0.1;
         
         // Apply any global modifiers (like slowdown from skills)
         if (this.game.enemyManager.enemySlowdownFactor) {

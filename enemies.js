@@ -6,20 +6,20 @@ export class EnemyManager {
             normal: {
                 emoji: '👾',
                 speed: 1,
-                health: 1,
+                health: 1.2, // slightly more health
                 size: 30,
                 scoreValue: 10,
-                goldValue: 5,
+                goldValue: 7, // more gold
                 color: '#5d5',
                 probability: 40
             },
             fast: {
                 emoji: '⚡',
                 speed: 2,
-                health: 0.8,
+                health: 1,
                 size: 25,
                 scoreValue: 15,
-                goldValue: 7,
+                goldValue: 8,
                 color: '#5df',
                 probability: 12
             },
@@ -216,7 +216,7 @@ class Enemy {
         // Boss specific properties
         this.isBoss = type.includes('Boss');
         this.attackCooldown = 0;
-        this.attackInterval = 2000; // 2 seconds
+        this.attackInterval = this.isBoss ? 1200 : 2000; // bosses attack more often
         
         // New enemy type specific properties
         this.shield = this.typeData.shield || 0;

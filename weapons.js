@@ -10,47 +10,47 @@ export class WeaponManager {
                 projectileSpeed: 8,
                 projectileSize: 5,
                 projectileColor: '#fff',
-                price: 100,
+                price: 120, // slightly more expensive
                 description: 'Balanced weapon'
             },
             MachineGun: {
                 damage: 0.5,
-                fireRate: 150,
+                fireRate: 130, // slightly slower
                 projectileSpeed: 10,
                 projectileSize: 3,
                 projectileColor: '#5f5',
-                price: 200,
+                price: 240,
                 description: 'Fast firing, less damage'
             },
             Shotgun: {
                 damage: 0.7,
-                fireRate: 800,
+                fireRate: 900, // slower
                 projectileSpeed: 7,
                 projectileSize: 4,
                 projectileCount: 5,
                 spread: 0.3,
                 projectileColor: '#fa5',
-                price: 300,
+                price: 350,
                 description: 'Fires multiple projectiles'
             },
             Rocket: {
                 damage: 3,
-                fireRate: 1200,
+                fireRate: 1400, // slower
                 projectileSpeed: 5,
                 projectileSize: 8,
                 explosionRadius: 50,
                 projectileColor: '#f55',
-                price: 500,
+                price: 600,
                 description: 'High damage, slow fire rate'
             },
             Laser: {
-                damage: 0.2,
+                damage: 0.05,
                 fireRate: 50,
                 beamWidth: 5,
                 beamColor: '#00ff88',
                 beamDuration: 100,
                 piercing: true,
-                price: 800,
+                price: 1500,
                 description: 'Continuous beam, pierces enemies'
             },
             Sniper: {
@@ -80,7 +80,7 @@ export class WeaponManager {
                 projectileSize: 6,
                 projectileColor: '#0ff',
                 piercing: true,
-                price: 1200,
+                price: 400,
                 description: 'Very high damage, pierces all enemies, slow reload',
                 element: 'electric'
             },
