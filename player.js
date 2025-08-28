@@ -18,11 +18,11 @@ export class Player {
         this.weapons = [];
         this.activeWeaponIndex = 0;
         
-        if (this.game.weaponManager && typeof this.game.weaponManager.createWeapon === 'function') {
-            this.addWeapon(this.game.weaponManager.createWeapon('Gun', 'common'));
-        } else {
-            // WeaponManager isn't ready yet; weapons will be added later (e.g. in Game.init or Player.reset)
-        }
+          // Option 1: Check if weaponSystem exists before using it
+          this.weapon = weaponSystem ? weaponSystem.createWeapon(type, this) : null;
+          
+          // OR Option 2: Use a default weapon if the system doesn't exist
+          this.weapon = weaponSystem ? weaponSystem.createWeapon(type, this) : this.createDefaultWeapon();
 
         this.invincible = false;
         this.temporaryModifiers = []; // {id, expireAt, revert}
@@ -298,4 +298,15 @@ export class Player {
             this.game.uiManager.updatePowerups(this.temporaryModifiers);
         }
     }
+
+    createDefaultWeapon() {
+      return {
+        damage: 10,
+        fireRate: 0.5,
+        // other default weapon properties
+        fire: function() {
+          // default fire behavior
+          console.log("Default weapon fired");
+        }
+      }
 }
