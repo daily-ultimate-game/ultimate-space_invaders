@@ -18,8 +18,11 @@ export class Player {
         this.weapons = [];
         this.activeWeaponIndex = 0;
         
-        // Add default weapon (Gun)
-        this.addWeapon(this.game.weaponManager.createWeapon('Gun', 'common'));
+        if (this.game.weaponManager && typeof this.game.weaponManager.createWeapon === 'function') {
+            this.addWeapon(this.game.weaponManager.createWeapon('Gun', 'common'));
+        } else {
+            // WeaponManager isn't ready yet; weapons will be added later (e.g. in Game.init or Player.reset)
+        }
 
         this.invincible = false;
         this.temporaryModifiers = []; // {id, expireAt, revert}
