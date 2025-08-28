@@ -309,4 +309,5 @@ export class Player {
           console.log("Default weapon fired");
         }
       }
+    }
 }
