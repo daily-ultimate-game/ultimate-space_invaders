@@ -14,31 +14,33 @@ class Game {
         this.lastTime = 0;
         this.accumulator = 0;
         this.timeStep = 1000 / 60; // 60 FPS
-        
+    
         this.width = 800;
         this.height = 600;
         this.gameState = 'menu'; // menu, playing, shop, skill, gameOver
-        
-        // Changed: Two players!
+    
+        // Initialize managers that players depend on before creating players
+        this.weaponManager = new WeaponManager(this);
+    
+        // Create players after weaponManager exists
         this.player1 = new Player(this); // Player 1
         this.player2 = new Player(this); // Player 2
-        
+    
         // Position player2 on the right side to start
         this.player2.x = this.width / 2 + 100;
-        
+    
         // ... rest as before
         this.enemyManager = null;
-        this.weaponManager = null;
         this.skillManager = null;
         this.shopManager = null;
         this.uiManager = null;
         this.levelManager = null;
         this.powerUpManager = null;
-        
+    
         this.level = 1;
         this.gold = 0;
         this.enemiesDefeated = 0;
-        
+    
         this.init();
     }
 
