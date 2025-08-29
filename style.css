@@ -71,6 +71,11 @@ h2 {
     max-width: 350px;
 }
 
+.start-buttons {
+    display: flex;
+    gap: 20px;
+}
+
 .button {
     background-color: #0a6;
     color: white;
