@@ -18,12 +18,6 @@ export class Player {
         this.weapons = [];
         this.activeWeaponIndex = 0;
         
-          // Option 1: Check if weaponSystem exists before using it
-          this.weapon = weaponSystem ? weaponSystem.createWeapon(type, this) : null;
-          
-          // OR Option 2: Use a default weapon if the system doesn't exist
-          this.weapon = weaponSystem ? weaponSystem.createWeapon(type, this) : this.createDefaultWeapon();
-
         this.invincible = false;
         this.temporaryModifiers = []; // {id, expireAt, revert}
     }
@@ -180,7 +174,11 @@ export class Player {
     }
     
     die() {
-        this.game.gameOver();
+        this.health = 0;
+        const alivePlayers = this.game.players.filter(p => p.health > 0);
+        if (alivePlayers.length === 0) {
+            this.game.gameOver();
+        }
     }
     
     addHealth(amount) {
@@ -297,17 +295,5 @@ export class Player {
         if (this.game.uiManager && typeof this.game.uiManager.updatePowerups === 'function') {
             this.game.uiManager.updatePowerups(this.temporaryModifiers);
         }
-    }
-
-    createDefaultWeapon() {
-      return {
-        damage: 10,
-        fireRate: 0.5,
-        // other default weapon properties
-        fire: function() {
-          // default fire behavior
-          console.log("Default weapon fired");
-        }
-      }
     }
 }
