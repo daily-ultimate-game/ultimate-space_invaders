@@ -16,13 +16,17 @@
             <div class="menu-content">
                 <div class="instructions">
                     <h2>Instructions</h2>
-                    <p><strong>Controls:</strong></p>
+                    <p><strong>Controls (1 Player):</strong></p>
                     <ul>
-                        <li>Move Left: ← or A</li>
-                        <li>Move Right: → or D</li>
-                        <li>Shoot: Space</li>
-                        <li>Switch Weapon: 1-5 (number keys)</li>
+                        <li>Move: ←/→ or A/D</li>
+                        <li>Shoot: Space or F</li>
+                        <li>Switch Weapon: 1-5</li>
                         <li>Pause: ESC or P</li>
+                    </ul>
+                    <p><strong>Controls (2 Players):</strong></p>
+                    <ul>
+                        <li>P1 Move: A/D, Shoot: F</li>
+                        <li>P2 Move: ←/→, Shoot: Space</li>
                     </ul>
                     <p><strong>Gameplay:</strong></p>
                     <ul>
@@ -63,7 +67,10 @@
                     </ul>
                 </div>
             </div>
-            <button id="start-game" class="button">START GAME</button>
+            <div class="start-buttons">
+                <button id="start-1-player" class="button">1 Player</button>
+                <button id="start-2-players" class="button">2 Players</button>
+            </div>
         </div>
 
         <div id="game-screen" class="screen hidden">
@@ -78,7 +85,7 @@
                 <div id="weapons-container">
                     <div class="weapon-slot" data-index="0">1</div>
                     <div class="weapon-slot" data-index="1">2</div>
-                    <div class="weapon-slot" data-index="2">3</div>
+                    <div class.weapon-slot" data-index="2">3</div>
                     <div class="weapon-slot" data-index="3">4</div>
                     <div class="weapon-slot" data-index="4">5</div>
                 </div>
