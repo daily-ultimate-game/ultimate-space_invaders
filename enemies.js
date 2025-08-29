@@ -306,17 +306,21 @@ class Enemy {
             }
         }
         
-        // Check if enemy has reached the bottom
-        if (this.y + this.size >= this.game.height - 50) {
-            this.game.player.takeDamage(1);
-            this.markedForDeletion = true;
-        }
-        
-        // Check collision with player
-        if (this.checkCollision(this.game.player)) {
-            this.game.player.takeDamage(1);
-            this.markedForDeletion = true;
-        }
+        this.game.players.forEach(player => {
+            if (player.health > 0) {
+                // Check if enemy has reached the bottom
+                if (this.y + this.size >= this.game.height - 50) {
+                    player.takeDamage(1);
+                    this.markedForDeletion = true;
+                }
+                
+                // Check collision with player
+                if (this.checkCollision(player)) {
+                    player.takeDamage(1);
+                    this.markedForDeletion = true;
+                }
+            }
+        });
     }
     
     render(ctx) {
@@ -583,11 +587,12 @@ class Enemy {
                     const angle = (i / 16) * Math.PI * 2;
                     this.shootProjectile(0, angle);
                 }
-                // Plus a focused attack at player
-                const dx = this.game.player.x + this.game.player.width / 2 - (this.x + this.size / 2);
-                const dy = this.game.player.y - (this.y + this.size / 2);
-                const angle = Math.atan2(dy, dx);
-                this.shootProjectile(0, angle, 2);
+                // Plus a focused attack at the first available player
+                const playerToAttack = this.game.players.find(p => p.health > 0) || this.game.players[0];
+                const dx = playerToAttack.x + playerToAttack.width / 2 - (this.x + this.size / 2);
+                const dy = playerToAttack.y - (this.y + this.size / 2);
+                const angleToPlayer = Math.atan2(dy, dx);
+                this.shootProjectile(0, angleToPlayer, 2);
                 break;
         }
     }
@@ -656,11 +661,13 @@ class EnemyProjectile {
             this.markedForDeletion = true;
         }
         
-        // Check collision with player
-        if (this.checkCollision(this.game.player)) {
-            this.game.player.takeDamage(1);
-            this.markedForDeletion = true;
-        }
+        // Check collision with all players
+        this.game.players.forEach(player => {
+            if (player.health > 0 && this.checkCollision(player)) {
+                player.takeDamage(1);
+                this.markedForDeletion = true;
+            }
+        });
     }
     
     render(ctx) {
